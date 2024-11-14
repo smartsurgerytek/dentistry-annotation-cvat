@@ -317,7 +317,7 @@ s3transfer==0.4.2
     # via boto3
 scipy==1.13.1
     # via datumaro
-shapely==1.7.1
+shapely
     # via -r cvat/requirements/base.in
 six==1.16.0
     # via
