@@ -1,0 +1,618 @@
+src
+├── actions
+│   ├── about-actions.ts
+│   ├── annotation-actions.ts
+│   ├── auth-actions.ts
+│   ├── boundaries-actions.ts
+│   ├── cloud-storage-actions.ts
+│   ├── export-actions.ts
+│   ├── formats-actions.ts
+│   ├── import-actions.ts
+│   ├── invitations-actions.ts
+│   ├── jobs-actions.ts
+│   ├── models-actions.ts
+│   ├── navigation-actions.ts
+│   ├── notification-actions.ts
+│   ├── organization-actions.ts
+│   ├── plugins-actions.ts
+│   ├── projects-actions.ts
+│   ├── requests-actions.ts
+│   ├── requests-async-actions.ts
+│   ├── review-actions.ts
+│   ├── server-actions.ts
+│   ├── settings-actions.ts
+│   ├── shortcuts-actions.ts
+│   ├── tasks-actions.ts
+│   ├── useragreements-actions.ts
+│   └── webhooks-actions.ts
+├── assets
+│   ├── S3.svg
+│   ├── ai-tools-icon.svg
+│   ├── back-arrow-icon.svg
+│   ├── back-jump-icon.svg
+│   ├── background-icon.svg
+│   ├── brain.svg
+│   ├── brush-icon.svg
+│   ├── check-icon.svg
+│   ├── clear-icon.svg
+│   ├── colorize-icon.svg
+│   ├── conflict.svg
+│   ├── cube-icon.svg
+│   ├── cursor-icon.svg
+│   ├── cvat-icon.svg
+│   ├── cvat-logo.svg
+│   ├── duration-icon.svg
+│   ├── ellipse-icon.svg
+│   ├── eraser-icon.svg
+│   ├── filter-icon.svg
+│   ├── first-icon.svg
+│   ├── fit-to-window-icon.svg
+│   ├── foreground-icon.svg
+│   ├── forward-jump-icon.svg
+│   ├── frame-count-icon.svg
+│   ├── frames-icon.svg
+│   ├── fullscreen-icon.svg
+│   ├── google-cloud.svg
+│   ├── group-icon.svg
+│   ├── guide-icon.svg
+│   ├── index.d.ts
+│   ├── join-icon.svg
+│   ├── last-icon.svg
+│   ├── main-menu-icon.svg
+│   ├── merge-icon.svg
+│   ├── move-icon.svg
+│   ├── multi-plus-icon.svg
+│   ├── next-empty-icon.svg
+│   ├── next-filtered-icon.svg
+│   ├── next-icon.svg
+│   ├── object-outside-icon.svg
+│   ├── opencv.svg
+│   ├── opencv_4.8.0.js
+│   ├── paid-feature.png
+│   ├── pause-icon.svg
+│   ├── play-icon.svg
+│   ├── plus-icon.svg
+│   ├── point-icon.svg
+│   ├── polygon-icon.svg
+│   ├── polygon-minus.svg
+│   ├── polygon-plus.svg
+│   ├── polyline-icon.svg
+│   ├── previous-empty-icon.svg
+│   ├── previous-filtered-icon.svg
+│   ├── previous-icon.svg
+│   ├── rectangle-icon.svg
+│   ├── redo-icon.svg
+│   ├── reset-perspective.svg
+│   ├── restore-icon.svg
+│   ├── rotate-icon.svg
+│   ├── save-icon.svg
+│   ├── show-gt-icon.svg
+│   ├── show-password.svg
+│   ├── signing-background.svg
+│   ├── skeleton-icon.svg
+│   ├── slice-icon.svg
+│   ├── split-icon.svg
+│   ├── tag-icon.svg
+│   ├── undo-icon.svg
+│   ├── vscode-icons_file-type-azure.svg
+│   └── zoom-icon.svg
+├── base.scss
+├── components
+│   ├── actions-menu
+│   │   ├── actions-menu.tsx
+│   │   └── styles.scss
+│   ├── analytics-page
+│   │   ├── analytics-page.tsx
+│   │   ├── analytics-performance.tsx
+│   │   ├── styles.scss
+│   │   └── views
+│   │       ├── analytics-card.tsx
+│   │       └── histogram-view.tsx
+│   ├── annotation-page
+│   │   ├── annotation-page.tsx
+│   │   ├── annotations-actions
+│   │   │   ├── annotations-actions-modal.tsx
+│   │   │   └── styles.scss
+│   │   ├── appearance-block.tsx
+│   │   ├── attribute-annotation-workspace
+│   │   │   ├── attribute-annotation-sidebar
+│   │   │   │   ├── attribute-annotation-sidebar.tsx
+│   │   │   │   ├── attribute-editor.tsx
+│   │   │   │   ├── attribute-switcher.tsx
+│   │   │   │   ├── object-basics-edtior.tsx
+│   │   │   │   └── object-switcher.tsx
+│   │   │   ├── attribute-annotation-workspace.tsx
+│   │   │   └── styles.scss
+│   │   ├── canvas
+│   │   │   ├── grid-layout
+│   │   │   │   ├── canvas-layout.conf.tsx
+│   │   │   │   ├── canvas-layout.tsx
+│   │   │   │   └── styles.scss
+│   │   │   └── views
+│   │   │       ├── canvas2d
+│   │   │       │   ├── brush-toolbox-styles.scss
+│   │   │       │   ├── brush-tools.tsx
+│   │   │       │   ├── canvas-context-menu.tsx
+│   │   │       │   ├── canvas-hints.tsx
+│   │   │       │   ├── canvas-point-context-menu.tsx
+│   │   │       │   ├── canvas-wrapper.tsx
+│   │   │       │   ├── draggable-hoc.tsx
+│   │   │       │   ├── gamma-filter.tsx
+│   │   │       │   ├── image-setups-content.tsx
+│   │   │       │   └── styles.scss
+│   │   │       ├── canvas3d
+│   │   │       │   ├── canvas-wrapper3D.tsx
+│   │   │       │   └── styles.scss
+│   │   │       └── context-image
+│   │   │           ├── context-image-selector.tsx
+│   │   │           ├── context-image.tsx
+│   │   │           └── styles.scss
+│   │   ├── review
+│   │   │   ├── conflict-label.tsx
+│   │   │   ├── create-issue-dialog.tsx
+│   │   │   ├── hidden-issue-label.tsx
+│   │   │   ├── issue-dialog.tsx
+│   │   │   ├── issues-aggregator.tsx
+│   │   │   └── styles.scss
+│   │   ├── review-workspace
+│   │   │   ├── controls-side-bar
+│   │   │   │   ├── controls-side-bar.tsx
+│   │   │   │   └── issue-control.tsx
+│   │   │   ├── review-workspace.tsx
+│   │   │   └── styles.scss
+│   │   ├── single-shape-workspace
+│   │   │   ├── single-shape-sidebar
+│   │   │   │   └── single-shape-sidebar.tsx
+│   │   │   ├── single-shape-workspace.tsx
+│   │   │   └── styles.scss
+│   │   ├── standard-workspace
+│   │   │   ├── controls-side-bar
+│   │   │   │   ├── approximation-accuracy.tsx
+│   │   │   │   ├── control-visibility-observer.tsx
+│   │   │   │   ├── controls-side-bar.tsx
+│   │   │   │   ├── cursor-control.tsx
+│   │   │   │   ├── draw-cuboid-control.tsx
+│   │   │   │   ├── draw-ellipse-control.tsx
+│   │   │   │   ├── draw-mask-control.tsx
+│   │   │   │   ├── draw-points-control.tsx
+│   │   │   │   ├── draw-polygon-control.tsx
+│   │   │   │   ├── draw-polyline-control.tsx
+│   │   │   │   ├── draw-rectangle-control.tsx
+│   │   │   │   ├── draw-shape-popover.tsx
+│   │   │   │   ├── draw-skeleton-control.tsx
+│   │   │   │   ├── fit-control.tsx
+│   │   │   │   ├── group-control.tsx
+│   │   │   │   ├── handle-popover-visibility.tsx
+│   │   │   │   ├── interactor-tooltips.tsx
+│   │   │   │   ├── join-control.tsx
+│   │   │   │   ├── merge-control.tsx
+│   │   │   │   ├── move-control.tsx
+│   │   │   │   ├── opencv-control.tsx
+│   │   │   │   ├── resize-control.tsx
+│   │   │   │   ├── rotate-control.tsx
+│   │   │   │   ├── setup-tag-control.tsx
+│   │   │   │   ├── setup-tag-popover.tsx
+│   │   │   │   ├── slice-control.tsx
+│   │   │   │   ├── split-control.tsx
+│   │   │   │   └── tools-control.tsx
+│   │   │   ├── objects-side-bar
+│   │   │   │   ├── color-picker.tsx
+│   │   │   │   ├── issues-list.tsx
+│   │   │   │   ├── label-item.tsx
+│   │   │   │   ├── labels-list.tsx
+│   │   │   │   ├── object-item-attribute.tsx
+│   │   │   │   ├── object-item-basics.tsx
+│   │   │   │   ├── object-item-buttons.tsx
+│   │   │   │   ├── object-item-details.tsx
+│   │   │   │   ├── object-item-element.tsx
+│   │   │   │   ├── object-item-menu.tsx
+│   │   │   │   ├── object-item.tsx
+│   │   │   │   ├── objects-list-header.tsx
+│   │   │   │   ├── objects-list.tsx
+│   │   │   │   ├── objects-side-bar.tsx
+│   │   │   │   ├── shared.ts
+│   │   │   │   ├── states-ordering-selector.tsx
+│   │   │   │   └── styles.scss
+│   │   │   ├── propagate-confirm.tsx
+│   │   │   ├── remove-confirm.tsx
+│   │   │   ├── standard-workspace.tsx
+│   │   │   └── styles.scss
+│   │   ├── standard3D-workspace
+│   │   │   ├── controls-side-bar
+│   │   │   │   └── controls-side-bar.tsx
+│   │   │   └── standard3D-workspace.tsx
+│   │   ├── styles.scss
+│   │   ├── tag-annotation-workspace
+│   │   │   ├── frame-tags.tsx
+│   │   │   ├── styles.scss
+│   │   │   ├── tag-annotation-sidebar
+│   │   │   │   ├── shortcuts-select.tsx
+│   │   │   │   └── tag-annotation-sidebar.tsx
+│   │   │   └── tag-annotation-workspace.tsx
+│   │   └── top-bar
+│   │       ├── annotation-menu.tsx
+│   │       ├── filters-modal.tsx
+│   │       ├── left-group.tsx
+│   │       ├── player-buttons.tsx
+│   │       ├── player-navigation.tsx
+│   │       ├── right-group.tsx
+│   │       ├── save-annotations-button.tsx
+│   │       ├── statistics-modal.tsx
+│   │       └── top-bar.tsx
+│   ├── change-password-modal
+│   │   ├── change-password-form.tsx
+│   │   └── change-password-modal.tsx
+│   ├── cloud-storages-page
+│   │   ├── cloud-storage-item.tsx
+│   │   ├── cloud-storage-status.tsx
+│   │   ├── cloud-storages-filter-configuration.ts
+│   │   ├── cloud-storages-list.tsx
+│   │   ├── cloud-storages-page.tsx
+│   │   ├── empty-list.tsx
+│   │   ├── styles.scss
+│   │   └── top-bar.tsx
+│   ├── common
+│   │   ├── cvat-dropdown-menu-paper
+│   │   │   ├── index.scss
+│   │   │   └── index.tsx
+│   │   ├── cvat-markdown.tsx
+│   │   ├── cvat-tooltip.tsx
+│   │   ├── go-back-button.tsx
+│   │   ├── loading-spinner.tsx
+│   │   ├── not-found.tsx
+│   │   ├── preview.tsx
+│   │   ├── styles.scss
+│   │   └── upload-file-status-modal.tsx
+│   ├── create-cloud-storage-page
+│   │   ├── cloud-storage-form.tsx
+│   │   ├── create-cloud-storage-page.tsx
+│   │   ├── gcs-locatiion.tsx
+│   │   ├── location.tsx
+│   │   ├── manifests-manager.tsx
+│   │   ├── s3-region.tsx
+│   │   └── styles.scss
+│   ├── create-job-page
+│   │   ├── create-job-page.tsx
+│   │   ├── job-form.tsx
+│   │   └── styles.scss
+│   ├── create-organization-page
+│   │   ├── create-organization-form.tsx
+│   │   ├── create-organization-page.tsx
+│   │   └── styles.scss
+│   ├── create-project-page
+│   │   ├── create-project-content.tsx
+│   │   ├── create-project-page.tsx
+│   │   └── styles.scss
+│   ├── create-task-page
+│   │   ├── advanced-configuration-form.tsx
+│   │   ├── basic-configuration-form.tsx
+│   │   ├── create-task-content.tsx
+│   │   ├── create-task-page.tsx
+│   │   ├── multi-task-progress.tsx
+│   │   ├── project-search-field.tsx
+│   │   ├── project-subset-field.tsx
+│   │   ├── quality-configuration-form.tsx
+│   │   └── styles.scss
+│   ├── cvat-app.tsx
+│   ├── dropdown-menu.tsx
+│   ├── email-confirmation-pages
+│   │   ├── email-confirmed.tsx
+│   │   ├── email-verification-sent.tsx
+│   │   ├── incorrect-email-confirmation.tsx
+│   │   └── styles.scss
+│   ├── export-backup
+│   │   ├── export-backup-modal.tsx
+│   │   └── styles.scss
+│   ├── export-dataset
+│   │   ├── export-dataset-modal.tsx
+│   │   └── styles.scss
+│   ├── file-manager
+│   │   ├── cloud-storages-tab.tsx
+│   │   ├── file-manager.tsx
+│   │   ├── local-files.tsx
+│   │   ├── remote-browser.tsx
+│   │   └── styles.scss
+│   ├── global-error-boundary
+│   │   ├── global-error-boundary.tsx
+│   │   └── styles.scss
+│   ├── header
+│   │   ├── header.tsx
+│   │   ├── organizations-search.tsx
+│   │   ├── settings-modal
+│   │   │   ├── multiple-shortcuts-display.tsx
+│   │   │   ├── player-settings.tsx
+│   │   │   ├── settings-modal.tsx
+│   │   │   ├── shortcut-settings.tsx
+│   │   │   ├── styles.scss
+│   │   │   └── workspace-settings.tsx
+│   │   └── styles.scss
+│   ├── import-backup
+│   │   └── import-backup-modal.tsx
+│   ├── import-dataset
+│   │   ├── import-dataset-modal.tsx
+│   │   └── styles.scss
+│   ├── invitation-watcher
+│   │   └── invitation-watcher.tsx
+│   ├── invitations-page
+│   │   ├── empty-list.tsx
+│   │   ├── invitation-item.tsx
+│   │   ├── invitations-list.tsx
+│   │   ├── invitations-page.tsx
+│   │   └── styles.scss
+│   ├── job-item
+│   │   ├── job-actions-menu.tsx
+│   │   ├── job-item.tsx
+│   │   └── styles.scss
+│   ├── jobs-page
+│   │   ├── empty-list.tsx
+│   │   ├── job-card.tsx
+│   │   ├── jobs-content.tsx
+│   │   ├── jobs-filter-configuration.ts
+│   │   ├── jobs-page.tsx
+│   │   ├── styles.scss
+│   │   └── top-bar.tsx
+│   ├── label-selector
+│   │   └── label-selector.tsx
+│   ├── labels-editor
+│   │   ├── common.ts
+│   │   ├── constructor-creator.tsx
+│   │   ├── constructor-updater.tsx
+│   │   ├── constructor-viewer-item.tsx
+│   │   ├── constructor-viewer.tsx
+│   │   ├── label-form.tsx
+│   │   ├── labels-editor.tsx
+│   │   ├── pick-from-model.tsx
+│   │   ├── raw-viewer.tsx
+│   │   ├── skeleton-configurator.tsx
+│   │   ├── skeleton-element-context-menu.tsx
+│   │   └── styles.scss
+│   ├── layout-grid
+│   │   ├── layout-grid.tsx
+│   │   └── styles.scss
+│   ├── login-page
+│   │   ├── login-form.tsx
+│   │   └── login-page.tsx
+│   ├── logout-component.tsx
+│   ├── md-guide
+│   │   ├── annotation-guide-page.tsx
+│   │   ├── md-guide-control.tsx
+│   │   └── styles.scss
+│   ├── model-runner-modal
+│   │   ├── detector-runner.tsx
+│   │   ├── labels-mapper.tsx
+│   │   ├── model-runner-dialog.tsx
+│   │   ├── object-mapper.tsx
+│   │   └── styles.scss
+│   ├── models-page
+│   │   ├── deployed-model-item.tsx
+│   │   ├── deployed-models-list.tsx
+│   │   ├── empty-list.tsx
+│   │   ├── models-filter-configuration.tsx
+│   │   ├── models-page.tsx
+│   │   ├── styles.scss
+│   │   └── top-bar.tsx
+│   ├── move-task-modal
+│   │   ├── label-mapper-item.tsx
+│   │   ├── move-task-modal.tsx
+│   │   └── styles.scss
+│   ├── organization-page
+│   │   ├── member-item.tsx
+│   │   ├── members-list.tsx
+│   │   ├── organization-page.tsx
+│   │   ├── styles.scss
+│   │   └── top-bar.tsx
+│   ├── paid-feature-placeholder
+│   │   ├── paid-feature-placeholder.tsx
+│   │   └── styles.scss
+│   ├── plugins-entrypoint.tsx
+│   ├── project-page
+│   │   ├── details.tsx
+│   │   ├── project-page.tsx
+│   │   ├── project-tasks-filter-configuration.ts
+│   │   ├── styles.scss
+│   │   └── top-bar.tsx
+│   ├── projects-page
+│   │   ├── actions-menu.tsx
+│   │   ├── empty-list.tsx
+│   │   ├── project-item.tsx
+│   │   ├── project-list.tsx
+│   │   ├── projects-filter-configuration.ts
+│   │   ├── projects-page.tsx
+│   │   ├── styles.scss
+│   │   └── top-bar.tsx
+│   ├── quality-control
+│   │   ├── quality-control-page.tsx
+│   │   ├── quality-settings-tab.tsx
+│   │   ├── styles.scss
+│   │   └── task-quality
+│   │       ├── allocation-table.tsx
+│   │       ├── quality-magement-tab.tsx
+│   │       ├── quality-overview-tab.tsx
+│   │       ├── quality-settings-form.tsx
+│   │       └── summary.tsx
+│   ├── register-page
+│   │   ├── register-form.tsx
+│   │   └── register-page.tsx
+│   ├── requests-page
+│   │   ├── empty-list.tsx
+│   │   ├── request-card.tsx
+│   │   ├── request-status.tsx
+│   │   ├── requests-list.tsx
+│   │   ├── requests-page.tsx
+│   │   └── styles.scss
+│   ├── reset-password-confirm-page
+│   │   ├── reset-password-confirm-form.tsx
+│   │   └── reset-password-confirm-page.tsx
+│   ├── reset-password-page
+│   │   ├── reset-password-form.tsx
+│   │   └── reset-password-page.tsx
+│   ├── resource-sorting-filtering
+│   │   ├── filtering.tsx
+│   │   ├── index.ts
+│   │   ├── request-users.tsx
+│   │   ├── sorting.tsx
+│   │   └── styles.scss
+│   ├── select-cloud-storage
+│   │   └── select-cloud-storage.tsx
+│   ├── setup-webhook-pages
+│   │   ├── create-webhook-page.tsx
+│   │   ├── setup-webhook-content.tsx
+│   │   ├── styles.scss
+│   │   └── update-webhook-page.tsx
+│   ├── shortcuts-dialog
+│   │   └── shortcuts-dialog.tsx
+│   ├── shortcuts.context.tsx
+│   ├── signing-common
+│   │   ├── cvat-signing-input.tsx
+│   │   ├── signing-layout.tsx
+│   │   └── styles.scss
+│   ├── storage
+│   │   ├── source-storage-field.tsx
+│   │   ├── storage-field.tsx
+│   │   ├── storage-with-switch-field.tsx
+│   │   ├── styles.scss
+│   │   └── target-storage-field.tsx
+│   ├── task-page
+│   │   ├── bug-tracker-editor.tsx
+│   │   ├── details.tsx
+│   │   ├── job-list.tsx
+│   │   ├── jobs-filter-configuration.ts
+│   │   ├── styles.scss
+│   │   ├── task-page.tsx
+│   │   ├── top-bar.tsx
+│   │   └── user-selector.tsx
+│   ├── tasks-page
+│   │   ├── automatic-annotation-progress.tsx
+│   │   ├── empty-list.tsx
+│   │   ├── styles.scss
+│   │   ├── task-item.tsx
+│   │   ├── task-list.tsx
+│   │   ├── tasks-filter-configuration.ts
+│   │   ├── tasks-page.tsx
+│   │   └── top-bar.tsx
+│   ├── update-cloud-storage-page
+│   │   ├── styles.scss
+│   │   └── update-cloud-storage-page.tsx
+│   └── webhooks-page
+│       ├── empty-list.tsx
+│       ├── styles.scss
+│       ├── top-bar.tsx
+│       ├── webhook-item.tsx
+│       ├── webhooks-filter-configuration.ts
+│       ├── webhooks-list.tsx
+│       └── webhooks-page.tsx
+├── config.tsx
+├── containers
+│   ├── actions-menu
+│   │   └── actions-menu.tsx
+│   ├── annotation-page
+│   │   ├── annotation-page.tsx
+│   │   ├── canvas
+│   │   │   └── canvas-context-menu.tsx
+│   │   ├── review-workspace
+│   │   │   └── controls-side-bar
+│   │   │       └── controls-side-bar.tsx
+│   │   ├── standard-workspace
+│   │   │   ├── controls-side-bar
+│   │   │   │   ├── controls-side-bar.tsx
+│   │   │   │   ├── draw-shape-popover.tsx
+│   │   │   │   └── setup-tag-popover.tsx
+│   │   │   └── objects-side-bar
+│   │   │       ├── label-item.tsx
+│   │   │       ├── object-buttons.tsx
+│   │   │       ├── object-item-details.tsx
+│   │   │       ├── object-item.tsx
+│   │   │       └── objects-list.tsx
+│   │   ├── standard3D-workspace
+│   │   │   └── controls-side-bar
+│   │   │       └── controls-side-bar.tsx
+│   │   └── top-bar
+│   │       └── top-bar.tsx
+│   ├── create-task-page
+│   │   └── create-task-page.tsx
+│   ├── header
+│   │   └── settings-modal
+│   │       ├── player-settings.tsx
+│   │       ├── shortcuts-settings.tsx
+│   │       └── workspace-settings.tsx
+│   ├── login-page
+│   │   └── login-page.tsx
+│   ├── register-page
+│   │   └── register-page.tsx
+│   └── tasks-page
+│       ├── task-item.tsx
+│       ├── tasks-list.tsx
+│       └── tasks-page.tsx
+├── cvat-canvas-wrapper.ts
+├── cvat-canvas3d-wrapper.ts
+├── cvat-core-wrapper.ts
+├── cvat-logger.ts
+├── cvat-store.ts
+├── icons.tsx
+├── index.html
+├── index.tsx
+├── reducers
+│   ├── about-reducer.ts
+│   ├── annotation-reducer.ts
+│   ├── auth-reducer.ts
+│   ├── cloud-storages-reducer.ts
+│   ├── export-reducer.ts
+│   ├── formats-reducer.ts
+│   ├── import-reducer.ts
+│   ├── index.ts
+│   ├── invitations-reducer.ts
+│   ├── jobs-reducer.ts
+│   ├── models-reducer.ts
+│   ├── navigation-reducer.ts
+│   ├── notifications-reducer.ts
+│   ├── organizations-reducer.ts
+│   ├── plugins-reducer.ts
+│   ├── projects-reducer.ts
+│   ├── requests-reducer.ts
+│   ├── review-reducer.ts
+│   ├── root-reducer.ts
+│   ├── server-api-reducer.ts
+│   ├── settings-reducer.ts
+│   ├── shortcuts-reducer.ts
+│   ├── tasks-reducer.ts
+│   ├── useragreements-reducer.ts
+│   └── webhooks-reducer.ts
+├── styles.scss
+└── utils
+    ├── any-search.ts
+    ├── auth-query.ts
+    ├── component-subkeymap.ts
+    ├── compute-text-color.ts
+    ├── conflict-detector.ts
+    ├── dimensions.ts
+    ├── enums.tsx
+    ├── environment.ts
+    ├── event-recorder.ts
+    ├── fabric-wrapper
+    │   ├── fabric-wrapper.ts
+    │   └── gamma-correciton.ts
+    ├── files.ts
+    ├── filter-annotations.ts
+    ├── filter-applicable-labels.ts
+    ├── filter-null.ts
+    ├── hooks.ts
+    ├── image-processing.tsx
+    ├── is-able-to-change-frame.ts
+    ├── key-code-mapper.ts
+    ├── math.ts
+    ├── mousetrap-react.tsx
+    ├── opencv-wrapper
+    │   ├── histogram-equalization.ts
+    │   ├── intelligent-scissors.ts
+    │   ├── opencv-interfaces.ts
+    │   ├── opencv-wrapper.ts
+    │   └── tracker-mil.ts
+    ├── platform-checker.ts
+    ├── quality.ts
+    ├── redux.ts
+    ├── remember-latest-frame.ts
+    ├── url-checker.ts
+    ├── validation-patterns.ts
+    └── wait-for.ts
+
+101 directories, 514 files

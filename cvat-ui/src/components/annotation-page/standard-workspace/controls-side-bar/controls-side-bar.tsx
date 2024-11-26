@@ -24,6 +24,7 @@ import FitControl, { Props as FitControlProps } from './fit-control';
 import ResizeControl, { Props as ResizeControlProps } from './resize-control';
 import ToolsControl from './tools-control';
 import OpenCVControl from './opencv-control';
+import InferenceControl from './inference-control';
 import DrawRectangleControl, { Props as DrawRectangleControlProps } from './draw-rectangle-control';
 import DrawPolygonControl, { Props as DrawPolygonControlProps } from './draw-polygon-control';
 import DrawPolylineControl, { Props as DrawPolylineControlProps } from './draw-polyline-control';
@@ -352,9 +353,10 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
             <ObservedResizeControl canvasInstance={canvasInstance} activeControl={activeControl} />
 
             <hr />
-            <ObservedToolsControl />
-            <ObservedOpenCVControl />
-            {
+            <InferenceControl canvasInstance={canvasInstance} />
+            {/* <ObservedToolsControl /> */}
+            {/* <ObservedOpenCVControl /> */}
+            {/* {
                 rectangleControlVisible && (
                     <ObservedDrawRectangleControl
                         canvasInstance={canvasInstance}
@@ -371,7 +373,7 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
                         disabled={controlsDisabled}
                     />
                 )
-            }
+            } */}
             {
                 polylineControlVisible && (
                     <ObservedDrawPolylineControl
@@ -390,7 +392,7 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
                     />
                 )
             }
-            {
+            {/* {
                 ellipseControlVisible && (
                     <ObservedDrawEllipseControl
                         canvasInstance={canvasInstance}
@@ -425,7 +427,7 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
                         disabled={controlsDisabled}
                     />
                 )
-            }
+            } */}
             {
                 tagControlVisible && (
                     <ObservedSetupTagControl
@@ -436,7 +438,7 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
             }
             <hr />
 
-            <ObservedMergeControl
+            {/* <ObservedMergeControl
                 canvasInstance={canvasInstance}
                 dynamicIconProps={dynamicMergeIconProps}
                 disabled={controlsDisabled}
@@ -462,9 +464,9 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
                 canvasInstance={canvasInstance}
                 activeControl={activeControl}
                 disabled={controlsDisabled}
-            />
+            /> */}
 
-            <ExtraControlsControl />
+            {/* <ExtraControlsControl /> */}
         </Layout.Sider>
     );
 }
