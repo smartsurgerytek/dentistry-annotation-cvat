@@ -6,12 +6,14 @@ import { ExperimentOutlined } from '@ant-design/icons';
 import { Canvas } from 'cvat-canvas-wrapper';
 import CVATTooltip from 'components/common/cvat-tooltip';
 
-interface Props {
+export interface Props {
     canvasInstance: Canvas;
+    frameData: any;
 }
 
 async function triggerInference(image: Blob, scale: number) {
     const formData = new FormData();
+
     formData.append('image', new File([image], 'current-image.png', { type: 'image/png' }));
     formData.append('scale', scale.toString());
 
@@ -22,7 +24,7 @@ async function triggerInference(image: Blob, scale: number) {
         });
 
         if (!response.ok) {
-            throw new Error('Failed to process the X-ray');
+            throw new Error('Failed to process');
         }
 
         const data = await response.json();
@@ -41,14 +43,15 @@ async function triggerInference(image: Blob, scale: number) {
 }
 
 function InferenceControl(props: Props): JSX.Element {
-    const { canvasInstance } = props;
+    const { canvasInstance, frameData } = props;
 
     const handleClick = async (): Promise<void> => {
         try {
             // Assuming canvasInstance has a method to get the current image as a Blob
-            const imageBlob = await canvasInstance.getCurrentImage(); // Hypothetical method
+            const imageBlob = await frameData.data(); // Hypothetical method
             const scale = 1.0; // Example scale value
 
+            console.log(imageBlob);
             triggerInference(imageBlob, scale);
         } catch (error) {
             console.error('Error fetching the current image:', error);

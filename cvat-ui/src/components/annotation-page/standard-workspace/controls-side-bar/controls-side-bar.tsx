@@ -16,29 +16,16 @@ import { LabelType } from 'cvat-core-wrapper';
 import { ShortcutScope } from 'utils/enums';
 import { registerComponentShortcuts } from 'actions/shortcuts-actions';
 import { subKeyMap } from 'utils/component-subkeymap';
-import ControlVisibilityObserver, { ExtraControlsControl } from './control-visibility-observer';
+import ControlVisibilityObserver from './control-visibility-observer';
 import RotateControl, { Props as RotateControlProps } from './rotate-control';
 import CursorControl, { Props as CursorControlProps } from './cursor-control';
 import MoveControl, { Props as MoveControlProps } from './move-control';
 import FitControl, { Props as FitControlProps } from './fit-control';
 import ResizeControl, { Props as ResizeControlProps } from './resize-control';
-import ToolsControl from './tools-control';
-import OpenCVControl from './opencv-control';
-import InferenceControl from './inference-control';
-import DrawRectangleControl, { Props as DrawRectangleControlProps } from './draw-rectangle-control';
-import DrawPolygonControl, { Props as DrawPolygonControlProps } from './draw-polygon-control';
+import InferenceControl, { Props as InferenceControlProps } from './inference-control';
 import DrawPolylineControl, { Props as DrawPolylineControlProps } from './draw-polyline-control';
 import DrawPointsControl, { Props as DrawPointsControlProps } from './draw-points-control';
-import DrawEllipseControl, { Props as DrawEllipseControlProps } from './draw-ellipse-control';
-import DrawCuboidControl, { Props as DrawCuboidControlProps } from './draw-cuboid-control';
-import DrawMaskControl, { Props as DrawMaskControlProps } from './draw-mask-control';
-import DrawSkeletonControl, { Props as DrawSkeletonControlProps } from './draw-skeleton-control';
 import SetupTagControl, { Props as SetupTagControlProps } from './setup-tag-control';
-import MergeControl, { Props as MergeControlProps } from './merge-control';
-import GroupControl, { Props as GroupControlProps } from './group-control';
-import JoinControl, { Props as JoinControlProps } from './join-control';
-import SplitControl, { Props as SplitControlProps } from './split-control';
-import SliceControl, { Props as SliceControlProps } from './slice-control';
 
 type Label = CombinedState['annotation']['job']['labels'][0];
 
@@ -125,22 +112,10 @@ const ObservedMoveControl = ControlVisibilityObserver<MoveControlProps>(MoveCont
 const ObservedRotateControl = ControlVisibilityObserver<RotateControlProps>(RotateControl);
 const ObservedFitControl = ControlVisibilityObserver<FitControlProps>(FitControl);
 const ObservedResizeControl = ControlVisibilityObserver<ResizeControlProps>(ResizeControl);
-const ObservedToolsControl = ControlVisibilityObserver(ToolsControl);
-const ObservedOpenCVControl = ControlVisibilityObserver(OpenCVControl);
-const ObservedDrawRectangleControl = ControlVisibilityObserver<DrawRectangleControlProps>(DrawRectangleControl);
-const ObservedDrawPolygonControl = ControlVisibilityObserver<DrawPolygonControlProps>(DrawPolygonControl);
+const ObservedInferenceControl = ControlVisibilityObserver<InferenceControlProps>(InferenceControl);
 const ObservedDrawPolylineControl = ControlVisibilityObserver<DrawPolylineControlProps>(DrawPolylineControl);
 const ObservedDrawPointsControl = ControlVisibilityObserver<DrawPointsControlProps>(DrawPointsControl);
-const ObservedDrawEllipseControl = ControlVisibilityObserver<DrawEllipseControlProps>(DrawEllipseControl);
-const ObservedDrawCuboidControl = ControlVisibilityObserver<DrawCuboidControlProps>(DrawCuboidControl);
-const ObservedDrawMaskControl = ControlVisibilityObserver<DrawMaskControlProps>(DrawMaskControl);
-const ObservedDrawSkeletonControl = ControlVisibilityObserver<DrawSkeletonControlProps>(DrawSkeletonControl);
 const ObservedSetupTagControl = ControlVisibilityObserver<SetupTagControlProps>(SetupTagControl);
-const ObservedMergeControl = ControlVisibilityObserver<MergeControlProps>(MergeControl);
-const ObservedGroupControl = ControlVisibilityObserver<GroupControlProps>(GroupControl);
-const ObservedJoinControl = ControlVisibilityObserver<JoinControlProps>(JoinControl);
-const ObservedSplitControl = ControlVisibilityObserver<SplitControlProps>(SplitControl);
-const ObservedSliceControl = ControlVisibilityObserver<SliceControlProps>(SliceControl);
 
 export default function ControlsSideBarComponent(props: Props): JSX.Element {
     const {
@@ -168,7 +143,6 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
     let cuboidControlVisible = withUnspecifiedType;
     let maskControlVisible = withUnspecifiedType;
     let tagControlVisible = withUnspecifiedType;
-    const skeletonControlVisible = labels.some((label: Label) => label.type === 'skeleton');
     labels.forEach((label: Label) => {
         rectangleControlVisible = rectangleControlVisible || label.type === LabelType.RECTANGLE;
         polygonControlVisible = polygonControlVisible || label.type === LabelType.POLYGON;
@@ -353,27 +327,7 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
             <ObservedResizeControl canvasInstance={canvasInstance} activeControl={activeControl} />
 
             <hr />
-            <InferenceControl canvasInstance={canvasInstance} />
-            {/* <ObservedToolsControl /> */}
-            {/* <ObservedOpenCVControl /> */}
-            {/* {
-                rectangleControlVisible && (
-                    <ObservedDrawRectangleControl
-                        canvasInstance={canvasInstance}
-                        isDrawing={activeControl === ActiveControl.DRAW_RECTANGLE}
-                        disabled={controlsDisabled}
-                    />
-                )
-            }
-            {
-                polygonControlVisible && (
-                    <ObservedDrawPolygonControl
-                        canvasInstance={canvasInstance}
-                        isDrawing={activeControl === ActiveControl.DRAW_POLYGON}
-                        disabled={controlsDisabled}
-                    />
-                )
-            } */}
+            <ObservedInferenceControl canvasInstance={canvasInstance} frameData={frameData} />
             {
                 polylineControlVisible && (
                     <ObservedDrawPolylineControl
@@ -392,42 +346,6 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
                     />
                 )
             }
-            {/* {
-                ellipseControlVisible && (
-                    <ObservedDrawEllipseControl
-                        canvasInstance={canvasInstance}
-                        isDrawing={activeControl === ActiveControl.DRAW_ELLIPSE}
-                        disabled={controlsDisabled}
-                    />
-                )
-            }
-            {
-                cuboidControlVisible && (
-                    <ObservedDrawCuboidControl
-                        canvasInstance={canvasInstance}
-                        isDrawing={activeControl === ActiveControl.DRAW_CUBOID}
-                        disabled={controlsDisabled}
-                    />
-                )
-            }
-            {
-                maskControlVisible && (
-                    <ObservedDrawMaskControl
-                        canvasInstance={canvasInstance}
-                        isDrawing={activeControl === ActiveControl.DRAW_MASK}
-                        disabled={controlsDisabled}
-                    />
-                )
-            }
-            {
-                skeletonControlVisible && (
-                    <ObservedDrawSkeletonControl
-                        canvasInstance={canvasInstance}
-                        isDrawing={activeControl === ActiveControl.DRAW_SKELETON}
-                        disabled={controlsDisabled}
-                    />
-                )
-            } */}
             {
                 tagControlVisible && (
                     <ObservedSetupTagControl
@@ -437,36 +355,6 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
                 )
             }
             <hr />
-
-            {/* <ObservedMergeControl
-                canvasInstance={canvasInstance}
-                dynamicIconProps={dynamicMergeIconProps}
-                disabled={controlsDisabled}
-            />
-            <ObservedGroupControl
-                canvasInstance={canvasInstance}
-                dynamicIconProps={dynamicGroupIconProps}
-                disabled={controlsDisabled}
-            />
-            <ObservedSplitControl
-                canvasInstance={canvasInstance}
-                dynamicIconProps={dynamicTrackIconProps}
-                disabled={controlsDisabled}
-            />
-            <ObservedJoinControl
-                updateActiveControl={updateActiveControl}
-                canvasInstance={canvasInstance}
-                activeControl={activeControl}
-                disabled={controlsDisabled}
-            />
-            <ObservedSliceControl
-                updateActiveControl={updateActiveControl}
-                canvasInstance={canvasInstance}
-                activeControl={activeControl}
-                disabled={controlsDisabled}
-            /> */}
-
-            {/* <ExtraControlsControl /> */}
         </Layout.Sider>
     );
 }
