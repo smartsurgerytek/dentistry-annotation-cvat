@@ -35,6 +35,8 @@ HuggingFace integrations, and advanced analytics (coming soon). We also
 do trainings and a dedicated support with 24 hour SLA.
 
 ## Quick start ⚡
+**Eason's Note**: please notice that if you run in Window, make sure download wsl and install **ubuntu:20.04** distro. Whenever you enter wsl from powershell, run `cd ~` to the home path. Please read [this part](https://docs.cvat.ai/docs/administration/basics/installation/#windows-10) first.
+
 
 - [Installation guide](https://docs.cvat.ai/docs/administration/basics/installation/)
 - [Manual](https://docs.cvat.ai/docs/manual/)
