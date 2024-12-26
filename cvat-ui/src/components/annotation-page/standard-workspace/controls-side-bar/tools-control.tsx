@@ -1209,12 +1209,11 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
 
                             switch (attributeSpec.inputType) {
                                 case 'number': {
-                                    const [min, max, step] = attributeSpec.values;
+                                    const [min, max] = attributeSpec.values;
                                     if (
                                         Number.isFinite(+value) &&
                                         +value >= +min &&
-                                        +value <= +max &&
-                                        !(+value % +step)
+                                        +value <= +max
                                     ) {
                                         return {
                                             ...acc,

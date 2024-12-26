@@ -426,13 +426,20 @@ class LambdaFunction:
 
         response_filtered = []
 
+        def is_numeric(value):
+            try:
+                float(value)
+                return True
+            except ValueError:
+                return False
+
         def check_attr_value(value, db_attr):
             if db_attr is None:
                 return False
 
             db_attr_type = db_attr["input_type"]
             if db_attr_type == "number":
-                return value.isnumeric()
+                return is_numeric(value)
             elif db_attr_type == "checkbox":
                 return value in ["true", "false"]
             elif db_attr_type == "text":
